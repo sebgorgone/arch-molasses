@@ -1,0 +1,39 @@
+show_system_status() {
+    # Colors
+    GREEN="\e[31m"
+    RED="\e[38;5;2m"
+    ORANGE='\e[1;38;5;208m'
+    RESET="\e[0m"
+
+    # Local date
+    local_date=$(date +"%Y-%m-%d")
+
+    # Local time
+    local_time=$(date +"%H:%M:%S")
+
+    # Hostname
+    host=$(hostname)
+
+    # IPv4 local address (first non-loopback)
+    ipv4=$(ip addr show | grep 'inet ' | grep -v '127.0.0.1' | awk '{print $2}' | cut -d/ -f1 | head -n1)
+
+    # Last reboot time
+    last_reboot=$(who -b | awk '{print $3, $4}')
+
+    # Disk usage of /dev/sda (percentage used)
+    disk_usage=$(df -h | grep '/dev/sda')
+
+    # Print neatly
+    echo -e "${ORANGE}WELCOME TO ARCH MOLASSES\n\n${RESET}"
+    echo -e "${GREEN}Local Date:${RESET} ${RED}${local_date}${RESET}"
+    echo -e "\n"
+    echo -e "${GREEN}Local Time:${RESET} ${RED}${local_time}${RESET}"
+    echo -e "\n"
+    echo -e "${GREEN}Hostname:${RESET} ${RED}${host}${RESET}"
+    echo -e "\n"
+    echo -e "${GREEN}IPv4 Address:${RESET} ${RED}${ipv4}${RESET}"
+    echo -e "\n"
+    echo -e "${GREEN}Last Restart:${RESET} ${RED}${last_reboot}${RESET}"
+    echo -e "\n"
+    echo -e "${GREEN}Disk Usage (/dev/sda):${RESET} \n${RED}${disk_usage}${RESET}"
+}

@@ -1,0 +1,5 @@
+packages+=(
+  libva-intel-driver
+  mesa-utils
+  vulkan-intel
+)

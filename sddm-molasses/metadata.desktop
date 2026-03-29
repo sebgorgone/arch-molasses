@@ -1,0 +1,6 @@
+[General]
+Name=Molasses
+Comment=Custom SDDM Theme
+Type=sddm-theme
+MainScript=Main.qml
+ConfigFile=theme.conf
