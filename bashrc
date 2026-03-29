@@ -1,0 +1,1 @@
+/home/ass/.bashrc
