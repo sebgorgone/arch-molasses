@@ -1,0 +1,12 @@
+AM_PATH="$HOME/arch-molasses"
+
+symlinks=(
+  "$AM_PATH/bash $HOME/.local/share/bash"
+  "$AM_PATH/configs/nvim $HOME/.config/nvim"
+  "$AM_PATH/configs/waybar $HOME/.config/waybar"
+  "$AM_PATH/configs/hypr $HOME/.config/hypr"
+  "$AM_PATH/configs/ghostty $HOME/.config/ghostty"
+  "$AM_PATH/sddm-molasses /usr/share/sddm/themes/sddmmolasses"
+  "$AM_PATH/bashrc $HOME/.bashrc"
+  "$AM_PATH/sddm-theme.conf /etc/sddm.conf.d/theme.conf"
+)
