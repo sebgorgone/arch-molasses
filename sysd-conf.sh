@@ -1,33 +1,62 @@
 #!/usr/bin/env bash
 set -e
 
-# use sudo only if not root
+# allow running as user
 if [ "$EUID" -ne 0 ]; then
     SUDO=sudo
 else
     SUDO=""
 fi
 
-echo "Enabling systemd-networkd + resolved..."
-$SUDO systemctl enable systemd-networkd
-$SUDO systemctl enable systemd-resolved
+enable() {
+    if systemctl list-unit-files | grep -q "^$1"; then
+        echo "Enabling $1"
+        $SUDO systemctl enable "$1"
+    else
+        echo "Skipping $1 (not installed)"
+    fi
+}
 
-echo "Creating DHCP network config..."
-$SUDO mkdir -p /etc/systemd/network
+enable_user() {
+    if systemctl --user list-unit-files | grep -q "^$1"; then
+        echo "Enabling user $1"
+        systemctl --user enable "$1"
+    else
+        echo "Skipping user $1"
+    fi
+}
 
-$SUDO tee /etc/systemd/network/20-dhcp.network > /dev/null <<EOF
-[Match]
-Name=en*
+echo "== enabling system services =="
 
-[Network]
-DHCP=yes
-EOF
+# display manager
+enable sddm.service
 
-echo "Linking resolv.conf..."
-$SUDO ln -sf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
+# networking (if you're using systemd-networkd)
+enable systemd-networkd.service
+enable systemd-resolved.service
 
-echo "Starting services..."
-$SUDO systemctl start systemd-networkd
-$SUDO systemctl start systemd-resolved
+# ssh
+enable sshd.service
 
-echo "Done."
+# seat management (hyprland without logind fallback)
+enable seatd.service
+
+# audio (pipewire stack — usually socket activated but safe)
+enable pipewire.service
+enable pipewire-pulse.service
+enable wireplumber.service
+
+# reflector auto mirror updates
+enable reflector.timer
+
+echo "== enabling user services =="
+
+# notifications
+enable_user dunst.service || true
+enable_user swaync.service || true
+
+
+echo "done. rebooting.."
+
+sudo reboot now
+
