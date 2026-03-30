@@ -1,7 +1,6 @@
 packages=(
   7zip
   alsa-utils
-  base
   base-devel
   brave-bin
   btop
