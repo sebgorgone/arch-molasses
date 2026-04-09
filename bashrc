@@ -17,3 +17,5 @@ PS1='\n[\[\e[31m\]\u\[\e[0m\] -> \[\e[38;5;208m\]\w\[\e[0m\]]\n\[\e[38;5;208m\]\
 
 # minimal PS1
 # PS1='[\u \W]\n\$ '
+
+alias tortoggle="$HOME/arch-molasses/tor-toggle.sh"
