@@ -19,3 +19,6 @@ PS1='\n[\[\e[31m\]\u\[\e[0m\] -> \[\e[38;5;208m\]\w\[\e[0m\]]\n\[\e[38;5;208m\]\
 # PS1='[\u \W]\n\$ '
 
 alias tortoggle="$HOME/arch-molasses/tor-toggle.sh"
+export mkey='/home/ass/.ssh/m01-key'
+alias jumps="$HOME/.cloudlog-cli/rcv2.sh"
+alias msysm="$HOME/.molassysmon/msysmon-remote-client/main.sh"
