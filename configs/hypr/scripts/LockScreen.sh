@@ -1,9 +1,9 @@
-#!/usr/bin/env bash
-# /* ---- 💫 https://github.com/JaKooLit 💫 ---- */  ##
+#!/bin/sh
 
-# For Hyprlock
-#pidof hyprlock || hyprlock -q
+set -eu
 
-# Ensure weather cache is up-to-date before locking (Waybar/lockscreen readers)
+if pidof hyprlock >/dev/null 2>&1; then
+    exit 0
+fi
 
-loginctl lock-session
+exec hyprlock

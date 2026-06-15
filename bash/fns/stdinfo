@@ -26,14 +26,11 @@ show_system_status() {
     # Print neatly
     echo -e "${ORANGE}WELCOME TO ARCH MOLASSES\n\n${RESET}"
     echo -e "${GREEN}Local Date:${RESET} ${RED}${local_date}${RESET}"
-    echo -e "\n"
     echo -e "${GREEN}Local Time:${RESET} ${RED}${local_time}${RESET}"
     echo -e "\n"
     echo -e "${GREEN}Hostname:${RESET} ${RED}${host}${RESET}"
-    echo -e "\n"
     echo -e "${GREEN}IPv4 Address:${RESET} ${RED}${ipv4}${RESET}"
     echo -e "\n"
     echo -e "${GREEN}Last Restart:${RESET} ${RED}${last_reboot}${RESET}"
-    echo -e "\n"
     echo -e "${GREEN}Disk Usage (/dev/sda):${RESET} \n${RED}${disk_usage}${RESET}"
 }

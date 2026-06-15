@@ -11,26 +11,20 @@
   "height": 14,
 
   "modules-left": [
-    "custom/separator#blank_2",
     "hyprland/workspaces",
-    "custom/separator#blank_2",
     "mpris",
     "tray"
   ],
 
   "modules-center": [
     "custom/lock",
-    "custom/separator#blank",
     "clock#3",
-    "custom/separator#blank",
     "custom/swaync"
   ],
 
   "modules-right": [
-    "hyprland/window",
-    "custom/separator#blank_2",
+    "network",
     "pulseaudio",
-    "custom/separator#blank_2",
     "group/mobo_drawer",
     "custom/power"
   ]

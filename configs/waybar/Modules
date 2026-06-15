@@ -81,7 +81,7 @@
 	"tooltip": true,
 	"tooltip-format": "{timeTo} {power}w",
 	"on-click-middle": "$HOME/.config/hypr/scripts/ChangeBlur.sh",
-	"on-click-right": "$HOME/.config/hypr/scripts/Wlogout.sh",
+	"on-click-right": "$HOME/arch-molasses/configs/hypr/scripts/PowerMenu.sh",
 },
 
 "bluetooth": {
@@ -281,7 +281,8 @@
 	"format-icons": [
 		"󰤯", "󰤟", "󰤢", "󰤥", "󰤨"
 	],
-	"on-click-right": "$HOME/.config/hypr/scripts/WaybarScripts.sh --nmtui"
+	"on-click": "xdg-terminal-exec -e impala",
+	"on-click-right": "xdg-terminal-exec -e impala"
 },
 
 "network#speed": {
